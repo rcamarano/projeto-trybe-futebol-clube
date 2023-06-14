@@ -6,29 +6,47 @@ import {
   CreationOptional,
 } from 'sequelize';
 import db from '.';
-// import OtherModel from './OtherModel';
 
-class SeqTeamModel extends Model<InferAttributes<SeqTeamModel>,
-InferCreationAttributes<SeqTeamModel>> {
+class SeqUserModel extends Model<InferAttributes<SeqUserModel>,
+InferCreationAttributes<SeqUserModel>> {
   declare id: CreationOptional<number>;
-  declare teamName: CreationOptional<string>;
+  declare username: CreationOptional<string>;
+  declare role: CreationOptional<string>;
+  declare email: CreationOptional<string>;
+  declare password: CreationOptional<string>;
 }
 
-SeqTeamModel.init({
+SeqUserModel.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
-  teamName: {
-    field: 'team_name',
-    type: DataTypes.STRING,
+  username: {
+    field: 'username',
+    type: DataTypes.STRING(30),
     allowNull: false,
   },
+  role: {
+    field: 'role',
+    type: DataTypes.STRING(30),
+    allowNull: false,
+  },
+  email: {
+    field: 'email',
+    type: DataTypes.STRING(30),
+    allowNull: false,
+  },
+  password: {
+    field: 'password',
+    type: DataTypes.STRING(30),
+    allowNull: false,
+  },
+
 }, {
   sequelize: db,
-  modelName: 'teams',
+  modelName: 'users',
   timestamps: false,
   underscored: true,
 });
@@ -44,4 +62,4 @@ SeqTeamModel.init({
 // Example.hasMany(OtherModel, { foreignKey: 'campoC', as: 'campoEstrangeiroC' });
 // Example.hasMany(OtherModel, { foreignKey: 'campoD', as: 'campoEstrangeiroD' });
 
-export default SeqTeamModel;
+export default SeqUserModel;
