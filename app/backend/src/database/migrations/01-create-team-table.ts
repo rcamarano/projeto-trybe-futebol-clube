@@ -5,6 +5,7 @@ export default {
  up(queryInterface: QueryInterface) {
 
   return queryInterface.createTable<ITeam & Model<ITeam>>('teams', {
+    
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,

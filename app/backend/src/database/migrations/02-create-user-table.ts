@@ -1,4 +1,3 @@
-
 import { Model, QueryInterface, DataTypes } from 'sequelize';
 import { IUser } from '../../Interfaces/users/IUser';
 
