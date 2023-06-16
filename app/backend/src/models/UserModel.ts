@@ -17,4 +17,18 @@ export default class UserModel {
       password: user.password,
     };
   }
+
+  async findById(id: string): Promise<IUser | null> {
+    const user = await this.model.findOne({ where: { id } });
+
+    if (!user) return null;
+
+    return {
+      id: user.id,
+      username: user.username,
+      role: user.role,
+      email: user.email,
+      password: user.password,
+    };
+  }
 }
