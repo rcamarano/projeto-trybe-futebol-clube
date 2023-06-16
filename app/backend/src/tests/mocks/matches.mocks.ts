@@ -38,7 +38,7 @@ const mockInProgress = [
   },
 ];
 
-const createMatche = {
+const createMatch = {
   homeTeamId: 13,
   homeTeamGoals: 1,
   awayTeamId: 2,
@@ -46,4 +46,7 @@ const createMatche = {
   inProgress: true,
 };
 
-export { mockMatch, mockInProgress, createMatche }
+export { 
+  mockMatch, 
+  mockInProgress, 
+  createMatch }

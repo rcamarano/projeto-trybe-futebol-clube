@@ -14,7 +14,6 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Teams testes', () => {
-
   it('should return all teams', async () => {
     sinon.stub(SeqTeamModel, "findAll").resolves(teams as any);
 
@@ -34,4 +33,13 @@ describe('Teams testes', () => {
     expect(status).to.be.equal(200);
     expect(body).to.be.deep.equal(team);
   });
+
+  it('should return an error if an inexistent id is provided', async () => {
+    const id = 999999;
+    const { body, status } = await chai.request(app).get(`/teams/${id}`);
+
+    expect(status).to.be.equal(500);
+    expect(body).to.be.deep.equal({ message: 'Time não encontrado' });
+  });
+  afterEach(sinon.restore);
 });
