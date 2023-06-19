@@ -30,7 +30,7 @@ class App {
   }
 
   public start(PORT: string | number): void {
-    this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+    this.app.listen(PORT, () => console.log(`RC - TFC is now running on port ${PORT}`));
   }
 
   private routes(): void {
