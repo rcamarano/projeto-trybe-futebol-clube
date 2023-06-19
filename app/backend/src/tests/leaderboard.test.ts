@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Testing GET on /leaderboard', function () {
+describe('Usando o método GET em /leaderboard', function () {
   let chaiHttpResponse: Response;
 
   it('Should return all home team stats', async function () {
