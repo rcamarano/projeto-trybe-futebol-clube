@@ -15,7 +15,7 @@ export default class LeaderBoardService {
         },
       });
 
-      const homeStats = await homeMathces.map((match) => (
+      const homeStats = homeMathces.map((match) => (
         homeTeamsData(team.teamName, [match])
       ));
 
@@ -24,13 +24,14 @@ export default class LeaderBoardService {
     });
 
     const results = await Promise.all(homeTeams);
-    return results;
+    const orderdResults = teamsClassified(results);
+    return orderdResults;
   }
 
   static async getAwayLeaderBoard() {
     const getTeams = await SequelizeTeam.findAll() as ITeam[];
 
-    const awayTeams = await getTeams.map(async (team) => {
+    const awayTeams = getTeams.map(async (team) => {
       const awayMatches = await SequelizeMatch.findAll({
         where: {
           awayTeamId: team.id,
@@ -38,7 +39,7 @@ export default class LeaderBoardService {
         },
       });
 
-      const awayStats = await awayMatches.map((match) => (
+      const awayStats = awayMatches.map((match) => (
         awayTeamsData(team.teamName, [match])
       ));
 
@@ -47,7 +48,7 @@ export default class LeaderBoardService {
     });
 
     const results = await Promise.all(awayTeams);
-    const classify = teamsClassified(results);
-    return classify;
+    const orderdResults = teamsClassified(results);
+    return orderdResults;
   }
 }

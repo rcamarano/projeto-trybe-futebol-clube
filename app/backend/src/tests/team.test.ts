@@ -7,7 +7,7 @@ import { app } from '../app';
 import SeqTeamModel from '../database/models/SeqTeamModel';
 
 // import { Response } from 'superagent';
-import { teams } from './mocks/team.moch';
+import { teams } from './mocks/team.mocks';
 
 chai.use(chaiHttp);
 
@@ -35,7 +35,7 @@ describe('Teams testes', () => {
   });
 
   it('should return an error if an inexistent id is provided', async () => {
-    const id = 999999;
+    const id = 9655875282754;
     const { body, status } = await chai.request(app).get(`/teams/${id}`);
 
     expect(status).to.be.equal(500);
