@@ -14,10 +14,11 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Usando o método GET em /matches', function () {
+describe('Testing GET on /matches', function () {
   let chaiHttpResponse: Response;
 
   it('Should return all matches', async function () {
+    sinon.stub(Model, 'findAll').resolves(mockMatch);
      chaiHttpResponse = await chai
        .request(app).get('/matches').send(mockMatch);
     expect(chaiHttpResponse.status).to.be.equal(200);

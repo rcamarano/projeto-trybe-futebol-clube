@@ -27,16 +27,27 @@ describe('Users Test', function () {
       expect(response.body.token).not.to.be.undefined
     });
 
-    it('should return "all fields must be filled - no password', async () => {
-      const response = await chai.request(app)
+    it('should return "all fields must be filled - no password"', async () => {
+      const userMock = SequelizeUser.build(regUser);
+      sinon.stub(SequelizeUser, 'findOne').resolves(userMock);
+    
+      const response = await chai
+        .request(app)
         .post('/login')
-        .send(userNoPassword)
-
-      expect(response.status).to.be.equal(400)
-      expect(response.body.message).to.be.equal('All fields must be filled')
-    })
+        .send({ email: 'test@example.com' }); // Não fornece a senha
+    
+      expect(response.status).to.be.equal(400);
+      expect(response.body.message).to.be.equal('All fields must be filled');
+    });
+    
+    afterEach(() => {
+      sinon.restore();
+    });    
 
     it('should return "All fields must be filled - no email', async () => {
+      const userMock = SequelizeUser.build(regUser)
+
+      sinon.stub(SequelizeUser, 'findOne').resolves(userMock)
       const response = await chai.request(app)
         .post('/login')
         .send({ password: '123456' })
@@ -46,7 +57,9 @@ describe('Users Test', function () {
     })
 
     it('Should return "Invalid email or password" - invalid email', async () => {
+      const userMock = SequelizeUser.build(regUser)
 
+      sinon.stub(SequelizeUser, 'findOne').resolves(userMock)
       const response = await chai.request(app)
         .post('/login')
         .send(invalidEmail)
@@ -56,6 +69,9 @@ describe('Users Test', function () {
     });
 
     it('Should return "Invalid email or password" - invalid password', async () => {
+      const userMock = SequelizeUser.build(regUser)
+
+      sinon.stub(SequelizeUser, 'findOne').resolves(userMock)
       const response = await chai.request(app)
         .post('/login')
         .send(invalidPassword)
