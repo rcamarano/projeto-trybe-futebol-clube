@@ -39,7 +39,7 @@ const homeTeamVictory = (homeTeamGoals: number, awayTeamGoals: number) => {
 
 const awayTeamVictory = (homeTeamGoals: number, awayTeamGoals: number) => {
   teams.totalPoints += 3;
-  teams.totalLosses += 1;
+  teams.totalVictories += 1;
   teams.goalsFavor += awayTeamGoals;
   teams.goalsOwn += homeTeamGoals;
 };
@@ -67,7 +67,7 @@ const homeTeamLoss = (homeTeamGoals: number, awayTeamGoals: number) => {
 
 const awayTeamLoss = (homeTeamGoals: number, awayTeamGoals: number) => {
   teams.totalPoints += 0;
-  teams.totalVictories += 1;
+  teams.totalLosses += 1;
   teams.goalsFavor += awayTeamGoals;
   teams.goalsOwn += homeTeamGoals;
 };
