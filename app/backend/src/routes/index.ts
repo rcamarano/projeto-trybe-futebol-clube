@@ -6,8 +6,8 @@ import leaderBoardRouter from './leaderBoard.routes';
 
 const router = Router();
 
-router.use('/teams', teamsRouter);
 router.use('/', userRouter);
+router.use('/teams', teamsRouter);
 router.use('/matches', matchesRouter);
 router.use('/leaderboard', leaderBoardRouter);
 
