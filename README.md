@@ -10,7 +10,7 @@
 Obrigado por sua visita.!
 
 <div align="center">
-  <img alt="Storage Manager" src="imgs/5ca10a0410f76.png" width="250px">
+  <img alt="TFC!" src="imgs/5ca10a0410f76.png" width="250px">
   <h1>TFC - Trybe Futebol CLube</h1>
   <p>
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/rcamarano/projeto-trybe-futebol-clube?color=blueviolet">
